@@ -39,4 +39,4 @@ function generatePackage(inputPath) {
 }
 
 
-export default generatePackage("src/core/index.ts")
+export default generatePackage("src/component/index.ts")

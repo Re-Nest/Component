@@ -1,5 +1,6 @@
 
-
+# ReNest Component
+* A component UI library for ReNest
 ## Internal components
 
 #### Props
@@ -24,7 +25,7 @@
 | ------ | -------------- | ----------- |
 | Button |                |             |
 
-### Components
+## Todo
 
 - [x] VStack/HStack/ZStack
 - [x] Button
