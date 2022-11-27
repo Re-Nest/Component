@@ -1,20 +1,22 @@
 import {Div} from "../Util/Tags";
-import {DotProp, ViewWrapper, View} from "@renest/renest";
+import {DotProp, ViewWrapper, View, Prop} from "@renest/renest";
 
 class HStack extends View {
     @DotProp spacing: any = "0px"
     @DotProp alignment: "top" | "center" | "bottom" = "top"
-    Body = ({children}:any) =>
-        Div(...children)
+    @Prop children: any
+
+    Body = () =>
+        Div(...this.children)
             .height("max-content")
-            .width("max-content")
+            .width("100%")
             .display("flex")
             .flexDirection("row")
             .columnGap(this.spacing)
             .forEachChild((child: any) => {
-                if (child.constructor.name === "Spacer") {
+                if (child.elementProps?.className === "RT-Spacer") {
                     child.flexGrow(1)
-                } else if (child.IAMRTWithStyle) {
+                } else if (child.IAmRTStyle) {
                     child.flexShrink(0)
                     if (this.alignment === "top") {
                         child.marginBottom("auto")

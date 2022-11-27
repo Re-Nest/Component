@@ -11,7 +11,7 @@ import ProgressDisplay from "./routes/ProgressDisplay";
 import ContextDisplay from "./routes/ContextDisplay";
 import ToggleDisplay from "./routes/ToggleDisplay";
 import ListDisplay from "./routes/ListDisplay";
-import {HStack, Paper, VStack, ZStack, Text, NavigationView, Button} from "../component";
+import {HStack, Paper, VStack, ZStack, Text, NavigationView, Button, Spacer} from "../component";
 
 let myThemes = {
     first: {
@@ -34,7 +34,7 @@ class Content extends View {
     @Theme myTheme: any = [myThemes, "second"]
 
     Body = () =>
-        ThemeProvider(
+        // ThemeProvider(
             ZStack(
                 Paper()
                     .width("1000px")
@@ -44,24 +44,28 @@ class Content extends View {
                     TopBar()
                         .padding("20px"),
                     NavigationView({
-                        "/": () => Text("welcome to react UI, click the button above to view component"),
+                        "/": () => HStack(Text("hh"), Spacer(), Text("hah")),
                         textField: () => TextFieldDisplay(),
                         list: () => ListDisplay(),
                         toggle: () => ToggleDisplay(),
                         image: () => ImageDisplay(),
                         progress: () => ProgressDisplay(),
                         context: () => ContextDisplay(),
-                        "_abc+": (value:any) => HStack("abc",value), // regExp
-                        "_what[a+]": (value:any) => HStack("no",value), // regExp
-                        _: (value:any) => HStack("other", value), // any other route
+                        ":abc+": (value:any) => HStack("abc",value), // regExp
+                        ":[a+]": (value:any) => HStack("no",value), // regExp
+                        ":": (value:any) => HStack("other", value), // any other route
                     })
                 ).padding("20px")
             )
                 .alignmentH("leading")
                 .alignmentV("top")
                 .padding("70px")
-        )
-            .useTheme(this.myTheme)
+        // )
+        //     .useTheme(this.myTheme)
 }
+
+
+
+
 
 export default ViewWrapper(Content)

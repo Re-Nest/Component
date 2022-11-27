@@ -1,12 +1,13 @@
 import {Div} from "../Util/Tags";
-import {DotProp, View, ViewWrapper} from "@renest/renest"
+import {DotProp, Prop, View, ViewWrapper} from "@renest/renest"
 
 class ZStack extends View {
     @DotProp alignmentH:  "leading" | "center" | "tailing" = "center"
     @DotProp alignmentV:  "top" | "center" | "bottom"  = "center"
+    @Prop children: any
 
-    Body = ({children}:any) =>
-        Div(...children)
+    Body = () =>
+        Div(...this.children)
             .height("max-content")
             .width("max-content")
             .display("grid")
@@ -21,7 +22,7 @@ class ZStack extends View {
                 "tailing": "right"
             } as any)[this.alignmentH])
             .forEachChild((child: any) => {
-                if (child.IAmRTWithStyle) {
+                if (child.IAmRTStyle) {
                     child
                         .position("relative")
                         .gridArea("1 / 1/ 1 / 1")

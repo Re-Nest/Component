@@ -14,7 +14,7 @@ function NavigationWrapper({wrapper}: any) {
     },[])
 
     RTConfig.debug = false
-    let children = wrapper.children.map((child: any)=>
+    let children = wrapper.elementChildren.map((child: any)=>
         child.IAmRT ? child.asReactElement() : child)
 
     RTConfig.debug = true
@@ -53,7 +53,7 @@ export class NavigationView extends View {
                 const newRoute = NavigationRoute(
                     this.pathRoutes[path] as (() => any), path, this
                 )
-                this.children.push(newRoute)
+                this.elementChildren.push(newRoute)
             }
         }
         this.navigationIds["[matchable]"] = uid()
@@ -73,7 +73,7 @@ export class NavigationView extends View {
         // ---- regex
         if (Object.keys(regexPathRoutes).length !== 0) {
             const newRoute = NavigationRouteMatchable(regexPathRoutes, withSubPath, this)
-            this.children.push(newRoute)
+            this.elementChildren.push(newRoute)
         }
 
         return createElement(

@@ -5,7 +5,7 @@ import {FragmentView, TagView} from "@renest/renest";
 
 function RouteElement({navigationView, elementFunc, path}: any) {
     let element = elementFunc() as any
-    navigationView.children = [element]
+    navigationView.elementChildren = [element]
     navigationView.passDownTheme()
     navigationView.passDownContext()
 
@@ -37,7 +37,7 @@ function MatchableRouteElement({navigationView, regexPathRoutes}: any) {
     let element: any = matchedName === null ? FragmentView : regexPathRoutes[matchedName]
     element = element(value ?? "")
 
-    navigationView.children = [element]
+    navigationView.elementChildren = [element]
     navigationView.passDownTheme()
     navigationView.passDownContext()
 

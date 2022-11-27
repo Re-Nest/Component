@@ -1,20 +1,22 @@
 import {Div} from "../Util/Tags";
-import {DotProp, ViewWrapper, View} from "@renest/renest"
+import {DotProp, ViewWrapper, View, Prop} from "@renest/renest"
 
 class VStack extends View {
     @DotProp spacing: any = "0px"
     @DotProp alignment:  "leading" | "center" | "tailing" = "leading"
-    Body = ({children}:any) =>
-        Div(...children)
-            .height("max-content")
+    @Prop children: any
+
+    Body = () =>
+        Div(...this.children)
+            .height("100%")
             .width("max-content")
             .display("flex")
             .flexDirection("column")
             .rowGap(this.spacing)
             .forEachChild((child: any) => {
-                if (child.constructor.name === "Spacer") {
+                if (child.elementProps?.className === "RT-Spacer") {
                     child.flexGrow(1)
-                } else if (child.IAmRTWithStyle) {
+                } else if (child.IAmRTStyle) {
                     child.flexShrink(0)
                     if (this.alignment === "leading") {
                         child.marginRight("auto")
