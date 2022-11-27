@@ -1,5 +1,5 @@
-import {Div} from "../Util/Tags";
 import {DotProp, ViewWrapper, View, Prop} from "@renest/renest"
+import {Div} from "../Convert";
 
 class VStack extends View {
     @DotProp spacing: any = "0px"

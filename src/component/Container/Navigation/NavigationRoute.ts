@@ -6,13 +6,12 @@ import {FragmentView, TagView} from "@renest/renest";
 function RouteElement({navigationView, elementFunc, path}: any) {
     let element = elementFunc() as any
     navigationView.elementChildren = [element]
-    navigationView.passDownTheme()
     navigationView.passDownContext()
 
     return (element.IAmRT) ? element.key(navigationView.navigationIds[path]).asReactElement() : element
 }
 
-export function NavigationRoute(elementFunc: () => any, path: string, navigationView: NavigationView) {
+export function NavigationRoute(elementFunc: () => any, path: string, navigationView: NavigationView): any {
     let ruiElement = TagView(Route)()
     ruiElement.setProps({
         element: createElement(
@@ -38,7 +37,6 @@ function MatchableRouteElement({navigationView, regexPathRoutes}: any) {
     element = element(value ?? "")
 
     navigationView.elementChildren = [element]
-    navigationView.passDownTheme()
     navigationView.passDownContext()
 
     return (element.IAmRT) ? (element as any).key(navigationView.navigationIds[matchedName??"_"]??"_").asReactElement() : element as ReactElement
@@ -46,7 +44,7 @@ function MatchableRouteElement({navigationView, regexPathRoutes}: any) {
 
 
 export function NavigationRouteMatchable(regexPathRoutes: {[key: string]: ((value: string) => any)}, withSubPath: boolean,
-                                  navigationView: NavigationView) {
+                                  navigationView: NavigationView): any {
     let ruiElement = TagView(Route)()
     ruiElement.setProps({
         element: createElement(

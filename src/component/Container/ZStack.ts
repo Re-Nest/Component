@@ -1,5 +1,5 @@
-import {Div} from "../Util/Tags";
 import {DotProp, Prop, View, ViewWrapper} from "@renest/renest"
+import {Div} from "../Convert";
 
 class ZStack extends View {
     @DotProp alignmentH:  "leading" | "center" | "tailing" = "center"

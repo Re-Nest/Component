@@ -2,7 +2,7 @@ import {Routes} from "react-router-dom";
 import {createElement, useEffect, useRef} from "react";
 import {NavigationRoute, NavigationRouteMatchable} from "./NavigationRoute";
 import {BrowserRouter as RRDBrowserRouter} from "react-router-dom";
-import {uid} from "../../Util/Utils";
+import {uid} from "../../utils";
 import {RTConfig, TagView, View} from "@renest/renest";
 
 function NavigationWrapper({wrapper}: any) {
@@ -86,4 +86,4 @@ export class NavigationView extends View {
 export default (pathRoutes: PathRoutes) => new NavigationView(pathRoutes)
 
 
-export const BrowserRouter = TagView(RRDBrowserRouter)
+export const BrowserRouter: any = TagView(RRDBrowserRouter)
