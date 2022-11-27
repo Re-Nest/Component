@@ -14,7 +14,7 @@ class HStack extends View {
             .flexDirection("row")
             .columnGap(this.spacing)
             .forEachChild((child: any) => {
-                if (child.elementProps?.className === "RT-Spacer") {
+                if (child._name === "Spacer") {
                     child.flexGrow(1)
                 } else if (child.IAmRTStyle) {
                     child.flexShrink(0)
