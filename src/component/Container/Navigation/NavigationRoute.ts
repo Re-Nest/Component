@@ -2,6 +2,7 @@ import {createElement, ReactElement} from "react";
 import {Route, useParams} from "react-router-dom";
 import {NavigationView} from "./NavigationView";
 import {FragmentView, TagView} from "@renest/renest";
+import {uid} from "../../utils";
 
 function RouteElement({navigationView, elementFunc, path}: any) {
     let element = elementFunc() as any
@@ -39,7 +40,9 @@ function MatchableRouteElement({navigationView, regexPathRoutes}: any) {
     navigationView.elementChildren = [element]
     navigationView.passDownContext()
 
-    return (element.IAmRT) ? (element as any).key(navigationView.navigationIds[matchedName??"_"]??"_").asReactElement() : element as ReactElement
+    // if no id in navigationIds, it means it's matchable, using new uid()
+    let key = navigationView.navigationIds[matchedName??"_"]??uid()
+    return (element.IAmRT) ? (element as any).key(key).asReactElement() : element as ReactElement
 }
 
 

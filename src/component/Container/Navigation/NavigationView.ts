@@ -56,7 +56,6 @@ export class NavigationView extends View {
                 this.elementChildren.push(newRoute)
             }
         }
-        this.navigationIds["[matchable]"] = uid()
 
         // ---- regex matches
         let regexPathRoutes: any = {}
@@ -64,7 +63,6 @@ export class NavigationView extends View {
         for (let regexName of regexNames) {
             let newRegexName = regexName.replace(this.regexTag, "").replace("/*", "")
             withSubPathArr.push(regexName.endsWith("/*"))
-            this.navigationIds[newRegexName] = uid()
             regexPathRoutes[newRegexName] = this.pathRoutes[regexName]
         }
 
